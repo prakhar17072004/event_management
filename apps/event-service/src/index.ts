@@ -18,7 +18,7 @@ const db = drizzle(pool);
 
 app.post('/events', async (req, res) => {
 const { organizerId, title, description, startDate, endDate, location } = req.body;
-const result = await db.insert(events).values({ organizerId, title, description, startDate, endDate, location }).returning();
+const result = await db.insert().values({ organizerId, title, description, startDate, endDate, location }).returning();
 res.json({ event: result });
 });
 
